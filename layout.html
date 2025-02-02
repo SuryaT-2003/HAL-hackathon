@@ -1,0 +1,407 @@
+<html lang="en">
+
+<head>
+	<title>{{ title }}</title>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='') }}"/>
+
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Agro Harvest Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+	<style>
+		html {
+			font-size: 1rem;
+		}
+
+		@media (min-width: 576px) {
+			html {
+				font-size: 1.25rem;
+			}
+		}
+
+		@media (min-width: 768px) {
+			html {
+				font-size: 1.5rem;
+			}
+		}
+
+		@media (min-width: 992px) {
+			html {
+				font-size: 1.75rem;
+			}
+		}
+
+		@media (min-width: 1200px) {
+			html {
+				font-size: 2rem;
+			}
+
+			html {
+				font-size: 1rem;
+			}
+
+			h1 {
+				font-size: 1.2rem;
+			}
+
+			h2 {
+				font-size: 1.1rem;
+			}
+
+			@media (min-width: 768px) {
+				html {
+					font-size: 1.1rem;
+				}
+
+				h1 {
+					font-size: 1.3rem;
+				}
+
+				h2 {
+					font-size: 1.2rem;
+				}
+			}
+
+			@media (min-width: 991px) {
+				html {
+					font-size: 1.2rem;
+				}
+
+				h1 {
+					font-size: 1.5rem;
+				}
+
+				h2 {
+					font-size: 1.4rem;
+				}
+			}
+
+			@media (min-width: 1200px) {
+				html {
+					font-size: 1.2rem;
+				}
+
+				h1 {
+					font-size: 1.7rem;
+				}
+
+				h2 {
+					font-size: 1.6rem;
+				}
+			}
+
+		}
+	</style>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	</body>
+	<!-- css files -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
+	<!-- bootstrap css -->
+	<link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
+	<!-- custom css -->
+	<link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+	<!-- <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png?') }}"> -->
+
+
+	<script type="text/JavaScript" src="{{ url_for('static', filename='scripts/cities.js') }}"></script>
+
+
+	<!-- google fonts -->
+	<link href="//fonts.googleapis.com/css?family=Thasadith:400,400i,700,700i&amp;subset=latin-ext,thai,vietnamese"
+		rel="stylesheet">
+	<!-- //google fonts -->
+
+	<style>
+		header {
+			background-color: rgba(30, 30, 30, 1);
+			margin-top: 0rem;
+			display: block;
+
+		}
+	</style>
+</head>
+<body>
+
+	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" style="background-color: #1C00ff00;">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/medical_logo-removebg-preview.png') }}" style="width: 90px; height: 90px" alt="" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                
+                <!-- Added Contact Us and Services -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact_us') }}">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('services') }}">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('chatbot') }}">Chatbot</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    /* Add a smooth transition to the navbar */
+    .navbar {
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Add a hover effect to the logo */
+    .logo {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .logo:hover {
+        transform: scale(1.1);
+    }
+
+    /* Add a hover effect to the nav links */
+    .nav-link {
+        position: relative;
+        color: #fff;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .nav-link:hover {
+        color: #00ff00;
+    }
+
+    /* Add an underline animation on hover */
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #00ff00;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    /* Add a subtle animation to the navbar toggler */
+    .navbar-toggler {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .navbar-toggler:hover {
+        transform: rotate(90deg);
+    }
+
+    /* Add a background color change on scroll */
+    .navbar.scrolled {
+        background-color: #333 !important;
+    }
+</style>
+
+<script>
+    // Add a scroll event listener to change navbar background color
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
+
+
+
+
+
+	{% block body %} {% endblock %}
+
+	<!-- Footer -->
+<footer class="text-center py-5 footer">
+    <div class="container py-md-3">
+        <!-- Logo -->
+        <h2 class="logo2 text-center">
+            <a href="{{ url_for('home') }}" class="footer-logo">
+                AI-Powered HealthCare Diagnosis System
+            </a>
+        </h2>
+        <!-- //Logo -->
+
+        <!-- Address or Additional Links -->
+        <div class="contact-left-footer mt-4">
+            <p class="footer-links">
+                <a href="{{ url_for('home') }}" class="footer-link">Home</a> |
+                <a href="{{ url_for('services') }}" class="footer-link">Services</a> |
+                <a href="{{ url_for('contact_us') }}" class="footer-link">Contact Us</a> |
+                <a href="{{ url_for('chatbot') }}" class="footer-link">Chatbot</a>
+            </p>
+        </div>
+
+        <!-- Team Information -->
+        <div class="w3l-copy text-center mt-4">
+            <p class="text-da">By Team: <br> <span class="team-name">Tech Raiders</span></p>
+        </div>
+
+        <!-- Copyright -->
+        <p class="homelogo mt-4">
+            <p>&copy; Copyright 2025. All Rights Reserved.</p>
+        </p>
+    </div>
+</footer>
+<!-- //Footer -->
+
+<style>
+    /* Footer Styling */
+    .footer {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 40px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #3498db, #9b59b6);
+        animation: footerBorder 5s infinite linear;
+    }
+
+    @keyframes footerBorder {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    /* Logo Styling */
+    .footer-logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .footer-logo:hover {
+        color: #9b59b6;
+    }
+
+    /* Footer Links Styling */
+    .footer-links {
+        margin: 20px 0;
+    }
+
+    .footer-link {
+        color: #ecf0f1;
+        text-decoration: none;
+        margin: 0 10px;
+        position: relative;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .footer-link::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #3498db;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .footer-link:hover {
+        color: #3498db;
+    }
+
+    .footer-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    /* Team Name Styling */
+    .team-name {
+        color: #9b59b6;
+        font-weight: bold;
+        animation: teamNameGlow 2s infinite alternate;
+    }
+
+    @keyframes teamNameGlow {
+        0% {
+            text-shadow: 0 0 5px #9b59b6, 0 0 10px #9b59b6;
+        }
+        100% {
+            text-shadow: 0 0 10px #3498db, 0 0 20px #3498db;
+        }
+    }
+
+    /* Copyright Styling */
+    .homelogo p {
+        margin: 10px 0 0;
+        font-size: 14px;
+        color: #bdc3c7;
+    }
+</style>
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+</body>
+
+</html>

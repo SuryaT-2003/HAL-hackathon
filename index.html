@@ -1,0 +1,247 @@
+{% extends 'layout.html' %} {% block body %}
+<!-- banner -->
+<section class="banner_w3lspvt" id="home">
+  <div class="csslider infinity" id="slider1">
+    <div class="banner-top">
+      <div class="overlay">
+        <div class="container">
+          <div class="w3layouts-banner-info text-center">
+            <h3 class="text-wh">AI-Powered HealthCare Diagnosis System</h3>
+            <h4 class="text-wh mx-auto my-4"><b>Upload Clear Images</b></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- //banner -->
+<!-- Our Services Section -->
+<!-- Our Services Section -->
+<section class="blog py-5">
+  <div class="container py-md-5">
+    <h3 class="heading mb-sm-5 mb-4 text-center">Our Services</h3>
+    <div class="row blog-grids">
+      <!-- Service 1 -->
+      <div class="col-lg-4 col-md-6 blog-right mt-lg-0 mt-5 pt-lg-0 pt-md-5">
+        <div
+          class="card"
+          style="
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <!-- Image Card -->
+          <div
+            class="card-img-container"
+            style="width: 100%; height: 200px; overflow: hidden"
+          >
+            <img
+              src="{{ url_for('static', filename='images/brain.jpg') }}"
+              class="card-img-top"
+              alt="Brain Tumor Classification"
+              style="width: 100%; height: 105%; object-fit: cover"
+            />
+          </div>
+          <!-- Description Card -->
+          <div
+            class="card-body"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              padding: 20px;
+              flex-grow: 1;
+            "
+          >
+            <a
+              href="{{ url_for('disease_prediction') }}"
+              class="service-link"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+              "
+            >
+              <h4 class="card-title">Brain Tumor Classification</h4>
+              <p class="card-text mt-2">
+                Click Here for Brain Tumor Detection.
+              </p>
+              <button
+                class="btn btn-primary"
+                style="
+                  margin-top: auto;
+                  align-self: center;
+                  padding: 10px 20px;
+                  border-radius: 30px;
+                  transition: background-color 0.3s;
+                  background-color: #007bff;
+                  border: none;
+                  color: white;
+                  font-size: 16px;
+                "
+              >
+                Click Here
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="col-lg-4 col-md-6 blog-right mt-lg-0 mt-5 pt-lg-0 pt-md-5">
+        <div
+          class="card"
+          style="
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <!-- Image Card -->
+          <div
+            class="card-img-container"
+            style="width: 100%; height: 200px; overflow: hidden"
+          >
+            <img
+              src="{{ url_for('static', filename='images/lung.jpg') }}"
+              class="card-img-top"
+              alt="Pneumonia Classification"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <!-- Description Card -->
+          <div
+            class="card-body"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              padding: 20px;
+              flex-grow: 1;
+            "
+          >
+            <a
+              href="{{ url_for('disease_prediction_pnemonia') }}"
+              class="service-link"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+              "
+            >
+              <h4 class="card-title">Pneumonia Classification</h4>
+              <p class="card-text mt-2">Click Here for Pneumonia Detection.</p>
+              <button
+                class="btn btn-primary"
+                style="
+                  margin-top: auto;
+                  align-self: center;
+                  padding: 10px 20px;
+                  border-radius: 30px;
+                  transition: background-color 0.3s;
+                  background-color: #007bff;
+                  border: none;
+                  color: white;
+                  font-size: 16px;
+                "
+              >
+                Click Here
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="col-lg-4 col-md-6 blog-right mt-lg-0 mt-5 pt-lg-0 pt-md-5">
+        <div
+          class="card"
+          style="
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <!-- Image Card -->
+          <div
+            class="card-img-container"
+            style="width: 100%; height: 200px; overflow: hidden"
+          >
+            <img
+              src="{{ url_for('static', filename='images/kidney.jpg') }}"
+              class="card-img-top"
+              alt="Kidney Stone Classification"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <!-- Description Card -->
+          <div
+            class="card-body"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              padding: 20px;
+              flex-grow: 1;
+            "
+          >
+            <a
+              href="{{ url_for('disease_prediction_kidney') }}"
+              class="service-link"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+              "
+            >
+              <h4 class="card-title">Kidney Stone Classification</h4>
+              <p class="card-text mt-2">
+                Click Here for Kidney Stone Detection.
+              </p>
+              <button
+                class="btn btn-primary"
+                style="
+                  margin-top: auto;
+                  align-self: center;
+                  padding: 10px 20px;
+                  border-radius: 30px;
+                  transition: background-color 0.3s;
+                  background-color: #007bff;
+                  border: none;
+                  color: white;
+                  font-size: 16px;
+                "
+              >
+                Click Here
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Ensure images fill the card and maintain aspect ratio */
+  .service-img {
+    width: 100%; /* Ensures full width */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Prevents distortion */
+  }
+
+  .card {
+    margin-bottom: 20px; /* Adds space between cards */
+  }
+</style>
+
+<!-- //Products & Services -->
+
+{% endblock %}
