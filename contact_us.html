@@ -1,0 +1,217 @@
+{% extends 'layout.html' %} {% block body %}
+<!-- Contact Us Section -->
+<section class="contact-section">
+  <div class="contact-container">
+    <h3 class="contact-heading">Contact Us</h3>
+    <div class="contact-content">
+      <!-- Left Side -->
+      <div class="contact-info">
+        <h4>Get in Touch</h4>
+        <p>
+          If you have any questions or need assistance, feel free to reach out
+          to us.
+        </p>
+        <ul>
+          <li><strong>Email:</strong> support@healthdiagnosis.com</li>
+          <li><strong>Phone:</strong> +91-8660358931</li>
+          <li>
+            <strong>Address:</strong> 123 Health Street, Medical City, India
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Side -->
+      <div class="contact-form">
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Write your message here"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Us CSS -->
+<style>
+  .contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .contact-container {
+    width: 80%;
+    max-width: 1100px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .contact-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffcc00;
+    animation: slideInFromTop 1s ease-in-out;
+  }
+
+  .contact-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .contact-info {
+    flex: 1;
+    text-align: left;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .contact-info h4 {
+    font-size: 1.8rem;
+    color: #ffcc00;
+  }
+
+  .contact-info ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .contact-info li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
+
+  .contact-form {
+    flex: 1;
+    background: #222;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    animation: slideInFromRight 1s ease-in-out;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  .form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #ffcc00;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #333;
+    color: white;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #bbb;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+
+  .submit-btn:hover {
+    background: #e6b800;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInFromTop {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInFromRight {
+    from {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .contact-info {
+      text-align: center;
+    }
+  }
+</style>
+{% endblock %}

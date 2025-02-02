@@ -1,0 +1,316 @@
+{% extends 'layout.html' %} {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot with Predefined Questionnaire</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
+
+      .chat-container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: #fff;
+      }
+
+      #chatbox {
+        width: 100%;
+        max-width: 600px;
+        height: 80vh;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: #f9f9f9;
+        margin-bottom: 20px;
+      }
+
+      .message {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        max-width: 70%;
+      }
+
+      .user-message {
+        background-color: #d1ffd6;
+        align-self: flex-end;
+      }
+
+      .bot-message {
+        background-color: #f1f1f1;
+        align-self: flex-start;
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+      }
+
+      .button-container button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        max-width: 300px;
+        text-align: left;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .button-container button:hover {
+        background-color: #45a049;
+      }
+
+      .input-container {
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+      }
+
+      #userInput {
+        width: 80%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      #sendMessage {
+        width: 15%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+
+      #sendMessage:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div id="chatbox"></div>
+
+      <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type your answer..." />
+        <button id="sendMessage">Send</button>
+      </div>
+    </div>
+
+    <script>
+      let currentQuestionIndex = 0;
+      let userName = "";
+
+      const questionnaire = [
+        {
+          question: "What is your name?",
+        },
+        {
+          question: "Are you having any health issues, like fever?",
+          answer:
+            "Fever can be caused by many factors, such as infections, inflammations, or heat-related conditions. To resolve fever, drink plenty of fluids, rest, and if it persists, take fever-reducing medication like paracetamol, or consult a healthcare provider.",
+        },
+        {
+          question: "Are you having any health issues, like headaches?",
+          answer:
+            "Headaches can be caused by stress, dehydration, or a variety of other factors. To relieve headaches, make sure you're hydrated, take a pain reliever like ibuprofen or aspirin, and rest in a quiet, dark place.",
+        },
+        {
+          question:
+            "Are you experiencing any health issues like cold or cough?",
+          answer:
+            "A cold or cough can usually be resolved with rest, hydration, and over-the-counter medication for relief. Steam inhalation and throat lozenges can also help soothe a sore throat.",
+        },
+        {
+          question: "Are you having any health issues, like stomach pain?",
+          answer:
+            "Stomach pain can be due to indigestion, stress, or more serious issues like ulcers. Try drinking warm water, avoiding heavy meals, and considering antacids for relief. If the pain persists, consult a doctor.",
+        },
+        {
+          question: "Are you experiencing any health issues, like joint pain?",
+          answer:
+            "Joint pain can be caused by arthritis, muscle strain, or other underlying conditions. To resolve joint pain, apply heat or cold compresses, take pain-relieving medications, and engage in gentle exercise or stretching. For severe cases, visit a healthcare professional.",
+        },
+        {
+          question: "Are you experiencing any health issues, like fatigue?",
+          answer:
+            "Fatigue can result from poor sleep, stress, or underlying conditions like anemia. Ensure you’re getting enough sleep, maintaining a balanced diet, and managing stress. If fatigue continues, a medical check-up might be necessary.",
+        },
+        {
+          question: "Are you having any health issues, like dizziness?",
+          answer:
+            "Dizziness can be caused by dehydration, low blood pressure, or other factors. Drink water, eat regular meals, and rest. If dizziness persists, seek medical attention to rule out any serious causes.",
+        },
+        {
+          question: "Are you having any health issues, like skin rashes?",
+          answer:
+            "Skin rashes can be caused by allergies, infections, or skin conditions like eczema. To resolve this, avoid scratching, use soothing creams, and keep the area clean. Consult a doctor if the rash persists or worsens.",
+        },
+        {
+          question: "Are you having any health issues, like back pain?",
+          answer:
+            "Back pain can result from poor posture, muscle strain, or other causes. To alleviate back pain, use heat or ice packs, rest, and try gentle stretching exercises. If the pain doesn’t improve, visit a doctor for further evaluation.",
+        },
+        {
+          question:
+            "Are you experiencing any health issues, like breathing difficulty?",
+          answer:
+            "Breathing difficulty can be caused by asthma, allergies, or infections like pneumonia. To resolve this, use your inhaler (if prescribed), avoid triggers, and seek medical help immediately if the problem worsens.",
+        },
+        {
+          question: "Are you having any health issues, like chest pain?",
+          answer:
+            "Chest pain can be a sign of various conditions, including heart problems. If you experience chest pain, especially with difficulty breathing, seek emergency medical help immediately.",
+        },
+        {
+          question:
+            "Are you experiencing any health issues, like a sore throat?",
+          answer:
+            "A sore throat can be caused by viral infections, allergies, or irritants. To relieve it, try warm saltwater gargles, throat lozenges, and drink warm fluids like tea or honey water. If symptoms last, see a doctor.",
+        },
+        {
+          question:
+            "Are you having any health issues, like high blood pressure?",
+          answer:
+            "High blood pressure can be managed with lifestyle changes, like reducing salt intake, exercising, and managing stress. If necessary, medications can be prescribed by a doctor.",
+        },
+        {
+          question:
+            "Are you having any health issues, like digestive problems?",
+          answer:
+            "Digestive problems such as bloating, gas, or indigestion can often be relieved by eating smaller meals, avoiding greasy foods, and staying hydrated. Over-the-counter medications like antacids may also help.",
+        },
+        {
+          question: "Are you experiencing any health issues, like nausea?",
+          answer:
+            "Nausea can be caused by various factors, such as digestive issues or infections. To relieve nausea, try ginger tea, stay hydrated, and rest. If it persists, consult a healthcare provider.",
+        },
+        {
+          question: "Are you having any health issues, like swelling?",
+          answer:
+            "Swelling can result from injury, fluid retention, or infections. To reduce swelling, elevate the affected area, apply ice, and avoid excessive salt intake. If swelling doesn't subside, seek medical advice.",
+        },
+        {
+          question: "Are you having any health issues, like hair loss?",
+          answer:
+            "Hair loss can be caused by stress, hormonal changes, or nutritional deficiencies. Eating a balanced diet, reducing stress, and using mild hair care products can help. If the problem persists, consult a dermatologist.",
+        },
+        {
+          question:
+            "Are you experiencing any health issues, like a loss of appetite?",
+          answer:
+            "Loss of appetite can be linked to stress, illness, or infections. Try eating smaller, more frequent meals, and focus on nutritious food. If this continues, consult a doctor to rule out any underlying issues.",
+        },
+        {
+          question: "Are you having any health issues, like trouble sleeping?",
+          answer:
+            "Trouble sleeping, or insomnia, can be caused by stress, anxiety, or poor sleep habits. To resolve it, try establishing a regular sleep routine, limit caffeine, and consider relaxation techniques. If it continues, speak to a healthcare provider.",
+        },
+        {
+          question: "Are you having any health issues, like weight gain?",
+          answer:
+            "Weight gain can occur due to poor diet, lack of exercise, or hormonal imbalances. To resolve this, try adopting a healthy diet and regular exercise routine. If weight gain continues unexpectedly, see a doctor for further evaluation.",
+        },
+        // Add other questions here
+      ];
+
+      function displayBotResponse(response) {
+        const botDiv = document.createElement("div");
+        botDiv.classList.add("message", "bot-message");
+        botDiv.innerText = response;
+        document.getElementById("chatbox").appendChild(botDiv);
+      }
+
+      function displayUserResponse(response) {
+        const userDiv = document.createElement("div");
+        userDiv.classList.add("message", "user-message");
+        userDiv.innerText = response;
+        document.getElementById("chatbox").appendChild(userDiv);
+      }
+
+      function displayNextQuestion() {
+        if (currentQuestionIndex < questionnaire.length) {
+          const questionObj = questionnaire[currentQuestionIndex];
+          displayBotResponse(questionObj.question);
+
+          if (currentQuestionIndex === 0) {
+            // Waiting for the name input
+            document
+              .getElementById("sendMessage")
+              .addEventListener("click", function () {
+                const userInput = document.getElementById("userInput").value;
+                if (userInput.trim() !== "") {
+                  userName = userInput;
+                  displayUserResponse(userInput);
+                  currentQuestionIndex++;
+                  document.getElementById("userInput").value = "";
+                  displayNextQuestion();
+                }
+              });
+          } else {
+            // Display Yes/No buttons for other questions
+            const buttonContainer = document.createElement("div");
+            buttonContainer.classList.add("button-container");
+
+            const yesButton = document.createElement("button");
+            yesButton.innerText = "Yes";
+            yesButton.onclick = function () {
+              displayUserResponse("Yes");
+              if (questionObj.answer) {
+                displayBotResponse(questionObj.answer);
+              }
+              currentQuestionIndex++;
+              displayNextQuestion();
+            };
+            buttonContainer.appendChild(yesButton);
+
+            const noButton = document.createElement("button");
+            noButton.innerText = "No";
+            noButton.onclick = function () {
+              displayUserResponse("No");
+              currentQuestionIndex++;
+              displayNextQuestion();
+            };
+            buttonContainer.appendChild(noButton);
+
+            document.getElementById("chatbox").appendChild(buttonContainer);
+          }
+        }
+      }
+
+      function startChat() {
+        const greetingMessage =
+          "Hello! I will ask you a series of health-related questions. Please answer them. Let's begin!";
+        displayBotResponse(greetingMessage);
+        displayNextQuestion();
+      }
+
+      startChat();
+    </script>
+  </body>
+</html>
+{% endblock %}

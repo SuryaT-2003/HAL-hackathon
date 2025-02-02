@@ -1,0 +1,96 @@
+{% extends 'layout.html' %} {% block body %}
+
+<div class="container py-5 mx-auto my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div
+        class="card card-body shadow-lg p-4"
+        style="background-color: #f9f9f9"
+        id="reportCard"
+      >
+        <h3
+          class="text-center mb-4"
+          style="
+            color: #2c3e50;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: bold;
+          "
+        >
+          Kidney Disease Report
+        </h3>
+
+        <!-- Display the user input data -->
+        <div class="data-list mb-3">
+          <p><strong>Name:</strong> {{ name }}</p>
+          <p><strong>Email:</strong> {{ email }}</p>
+          <p><strong>Phone Number:</strong> {{ phone }}</p>
+          <p><strong>Age:</strong> {{ age }}</p>
+          <p><strong>Gender:</strong> {{ gender }}</p>
+        </div>
+
+        <div class="details-list">
+          <p><strong>Disease Name:</strong> {{ details.disease_name }}</p>
+          <p><strong>Condition:</strong> {{ details.condition }}</p>
+          <p><strong>Symptoms:</strong> {{ details.symptoms }}</p>
+          <p><strong>Possible Causes:</strong> {{ details.possible_causes }}</p>
+          <p><strong>Diagnosis Method:</strong> {{ details.diagnosis }}</p>
+          <p><strong>Treatment Options:</strong> {{ details.treatment }}</p>
+          <p>
+            <strong>Estimated Cost of Treatment:</strong> {{
+            details.estimated_cost }}
+          </p>
+          <p><strong>Recovery Period:</strong> {{ details.recovery_period }}</p>
+          <p>
+            <strong>Precautionary Measures:</strong> {{ details.precaution }}
+          </p>
+        </div>
+
+        <!-- Button to download the report as a PDF -->
+        <div class="text-center mt-4">
+          <button id="downloadBtn" class="btn btn-success btn-lg shadow-lg">
+            Download Report as PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include html2pdf Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+<script type="text/javascript">
+  document.getElementById("downloadBtn").addEventListener("click", function () {
+    var content = `
+      <h3 style="text-align:center; font-family: 'Helvetica', sans-serif; color: #2c3e50;">Kidney Disease Report</h3>
+      <p><strong>Name:</strong> {{ name }}</p>
+      <p><strong>Email:</strong> {{ email }}</p>
+      <p><strong>Phone Number:</strong> {{ phone }}</p>
+      <p><strong>Age:</strong> {{ age }}</p>
+      <p><strong>Gender:</strong> {{ gender }}</p>
+      <p><strong>Disease Name:</strong> {{ details.disease_name }}</p>
+      <p><strong>Condition:</strong> {{ details.condition }}</p>
+      <p><strong>Symptoms:</strong> {{ details.symptoms }}</p>
+      <p><strong>Possible Causes:</strong> {{ details.possible_causes }}</p>
+      <p><strong>Diagnosis Method:</strong> {{ details.diagnosis }}</p>
+      <p><strong>Treatment Options:</strong> {{ details.treatment }}</p>
+      <p><strong>Estimated Cost of Treatment:</strong> {{ details.estimated_cost }}</p>
+      <p><strong>Recovery Period:</strong> {{ details.recovery_period }}</p>
+      <p><strong>Precautionary Measures:</strong> {{ details.precaution }}</p>
+    `;
+
+    // Use html2pdf to generate PDF
+    var opt = {
+      margin: 1,
+      filename: "kidney_disease_report.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
+
+    // Generate the PDF with the content (without card and background styling)
+    html2pdf().from(content).set(opt).save();
+  });
+</script>
+
+{% endblock %}

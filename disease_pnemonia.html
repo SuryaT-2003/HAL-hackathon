@@ -1,0 +1,196 @@
+{% extends 'layout.html' %} {% block body %}
+
+<style>
+  html,
+  body {
+    background-color: rgb(206, 206, 228);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Increased size for form container */
+  .container {
+    width: 550px; /* Increased width */
+    height: auto;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 20px 20px; /* Increased padding */
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 0.5s;
+  }
+
+  /* Fade in animation for form */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Styling for the form container with a gradient background */
+  .form-signin {
+    width: 100%;
+    background: linear-gradient(to bottom, #ffffff, #f1f1f1);
+    padding: 30px; /* Increased padding */
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    opacity: 0;
+    animation: zoomIn 0.8s forwards;
+    animation-delay: 1s;
+  }
+
+  /* Slide in animation for form inputs */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Animation for submit button */
+  .btn-submit {
+    font-weight: bold;
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    opacity: 0;
+    animation: zoomIn 0.8s forwards;
+    animation-delay: 1.5s;
+  }
+
+  /* Zoom in animation for submit button */
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Styling for image preview */
+  #output-image {
+    display: none;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  /* Form input fields animation */
+  .form-control,
+  .form-control-file {
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    opacity: 0;
+    animation: slideIn 0.8s forwards;
+    animation-delay: 1s;
+  }
+
+  /* Adjustments for the form text */
+  h2 {
+    font-weight: bold;
+    color: #333;
+  }
+  h3 {
+    font-size: 22px; /* Adjust if needed */
+    white-space: nowrap; /* Prevents text wrapping */
+  }
+</style>
+<br /><br />
+<h2 style="text-align: center; margin: 0px; color: black">
+  <b>Pneumonia Classification</b>
+</h2>
+<br /><br />
+
+<div class="container">
+  <form class="form-signin" method="post" enctype="multipart/form-data">
+    <h3><b>Enter Your Details</b></h3>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" class="form-control" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" class="form-control" required />
+
+    <label for="age">Age:</label>
+    <input
+      type="number"
+      id="age"
+      name="age"
+      class="form-control"
+      required
+      min="1"
+    />
+
+    <label for="phone">Phone Number:</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      class="form-control"
+      required
+      pattern="[0-9]{10}"
+      placeholder="Enter 10-digit phone number"
+    />
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" class="form-control" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+
+    <p style="color: black; font-weight: bold">
+      Please Upload A Clear Chest X-ray for Pneumonia Detection:
+    </p>
+    <input
+      type="file"
+      name="file"
+      class="form-control-file"
+      id="inputfile"
+      onchange="preview_image(event)"
+    />
+
+    <img id="output-image" class="rounded mx-auto d-block" />
+
+    <button class="btn btn-lg btn-primary btn-block btn-submit" type="submit">
+      Predict
+    </button>
+  </form>
+</div>
+
+<script type="text/javascript">
+  function preview_image(event) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var output = document.getElementById("output-image");
+      output.src = reader.result;
+      output.style.display = "block";
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
+
+{% endblock %}

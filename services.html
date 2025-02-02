@@ -1,0 +1,188 @@
+{% extends 'layout.html' %} {% block body %}
+
+<section class="blog py-5">
+  <div class="container py-md-5">
+    <h3 class="heading mb-sm-5 mb-4 text-center">Our Services</h3>
+    <div class="row blog-grids">
+      <!-- Service 1 -->
+      <div class="col-lg-4 col-md-6 blog-right mt-lg-0 mt-5 pt-lg-0 pt-md-5">
+        <div class="card service-card">
+          <!-- Image Card -->
+          <div class="card-image">
+            <img
+              src="{{ url_for('static', filename='images/brain.jpg') }}"
+              class="card-img-top"
+              alt="Brain Tumor Classification"
+            />
+          </div>
+          <!-- Description Card -->
+          <div class="card-body">
+            <a href="{{ url_for('disease_prediction') }}">
+              <h4 class="card-title">Brain Tumor Classification</h4>
+              <p class="card-text mt-2">
+                Click Here for Brain Tumor Detection.
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="col-lg-4 col-md-6 blog-right mt-lg-0 mt-5 pt-lg-0 pt-md-5">
+        <div class="card service-card">
+          <!-- Image Card -->
+          <div class="card-image">
+            <img
+              src="{{ url_for('static', filename='images/lung.jpg') }}"
+              class="card-img-top"
+              alt="Pneumonia Classification"
+            />
+          </div>
+          <!-- Description Card -->
+          <div class="card-body">
+            <a href="{{ url_for('disease_prediction_pnemonia') }}">
+              <h4 class="card-title">Pneumonia Classification</h4>
+              <p class="card-text mt-2">Click Here for Pneumonia Detection.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="col-lg-4 col-md-6 blog-right mt-lg-0 mt-5 pt-lg-0 pt-md-5">
+        <div class="card service-card">
+          <!-- Image Card -->
+          <div class="card-image">
+            <img
+              src="{{ url_for('static', filename='images/kidney.jpg') }}"
+              class="card-img-top"
+              alt="Kidney Stone Classification"
+            />
+          </div>
+          <!-- Description Card -->
+          <div class="card-body">
+            <a href="{{ url_for('disease_prediction_kidney') }}">
+              <h4 class="card-title">Kidney Stone Classification</h4>
+              <p class="card-text mt-2">
+                Click Here for Kidney Stone Detection.
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Full-page service section */
+  .blog {
+    background: linear-gradient(135deg, #343a40, #495057);
+    min-height: 100vh;
+    padding: 60px 0;
+  }
+
+  .heading {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  .blog-grids {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .card-img-top:hover {
+    transform: scale(1.1);
+  }
+
+  .card-body {
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ff6b6b;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  .card-body a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .card-body a:hover {
+    color: #ff6b6b;
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .blog-grids {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+  }
+</style>
+{% endblock %}
